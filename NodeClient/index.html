@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Services: WebSockets - Simple chat</title>
+</head>
+
+<body>
+  <h3>Choose websocket server</h3>
+  <h5><a href="https://github.com/soucik/services">Github repository https://github.com/soucik/services</a></h5>
+  <ul>
+    <li>
+      <h4><a href="test.html">Local Test Server</a></h4>
+    </li>
+    <li>
+      <h4><a href="local.html">Local</a></h4>
+      <pre>
+      cmd in nodeServer folder: node chat-server
+      </pre>
+    </li>
+    <li>
+      <h4><a href="remote.html">Remote</a></h4>
+      <pre>
+      remote webserver: services-2320.rostiapp.cz
+      putty: app@alpha-node-6.rosti.cz:13420
+      cmd in putty: supervisorctl
+      <a href="https://docs.rosti.cz/apps/node/#supervisor">rosti docs</a>
+      <a href="http://nginx.org/en/docs/http/websocket.html">nginx WebSockets docs</a>
+      <a href="http://www.tutorialspoint.com/articles/how-to-configure-nginx-as-reverse-proxy-for-websocket">nginx reverse proxy docs for WebSockets</a>
+      <a href="https://nodejs.org/api/http.html#http_server_settimeout_msecs_callback">nodejs docs</a>
+    </pre>
+    </li>
+  </ul>
+</body>
+
+</html>

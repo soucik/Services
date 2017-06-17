@@ -1,0 +1,13 @@
+{
+  "name": "nodetests",
+  "version": "1.0.0",
+  "description": "Test app for nodejs",
+  "author": "Palino",
+    "scripts": {
+      "start": "node chat-server.js"
+  },
+  "dependencies": {
+    "websocket": "1.0.24",
+    "jquery":"*"
+  }
+}
