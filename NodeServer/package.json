@@ -1,13 +1,13 @@
 {
-  "name": "nodetests",
-  "version": "1.0.0",
-  "description": "Test app for nodejs",
-  "author": "Palino",
+  "name": "mukhin_chat",
+  "description": "example chat application with socket.io",
+  "version": "0.0.1",
+    "author": "Palino",
     "scripts": {
-      "start": "node chat-server.js"
+      "start": "node app.js"
   },
   "dependencies": {
-    "websocket": "1.0.24",
-    "jquery":"*"
+    "express": "",
+    "socket.io": "^2.0.3"
   }
 }
