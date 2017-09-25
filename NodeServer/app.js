@@ -1,33 +1,86 @@
 var express = require('express')
 	, app = express()
 	, http = require('http')
+	, request = require('request')
+	, rp = require('request-promise')
 	, server = http.createServer(app)
 	, io = require('socket.io').listen(server);
 
 server.listen(8080);
 
+const keys_private = require('./private/keys_private.js');
+
+function ImagesFromIdResolver() {
+	this._baseUrl = 'https://graph.facebook.com/v2.10/';
+	this._access_token = keys_private.access_token();
+	this._images = new Array();
+}
+
+ImagesFromIdResolver.prototype.getUrlFromId = function (photoId) {
+	let photosUrlsWithIds = this._baseUrl + photoId + '/picture' + '?fields=url' + '&type=' + 'album' + '&access_token=' + this._access_token;
+	console.log(photosUrlsWithIds);
+	rp(photosUrlsWithIds)
+		.then(res => { return res.url });
+}
+
 app.use(express.static(__dirname + '/public'));
 
-// routing
+var resolver = new ImagesFromIdResolver();
+
+////////////////////////////////////////////////////////////
+//	request:	/
+//	response:	index.html
+//	http://localhost:8080/
 app.get('/', function (req, res) {
 	res.sendfile(__dirname + '/public/index.html');
 });
+
 ////////////////////////////////////////////////////////////
+//	request:	/BeautyCodeSalon/album/:albumId
+//	response:	data:[{created_time: "date", id: "value"},{created_time: "date", id: "value"}]
+//	http://localhost:8080/BeautyCodeSalon/album/10204426332601677
+app.get('/BeautyCodeSalon/album/:albumId', function (request, response) {
+	var options = {
+		method: 'GET',
+		uri: resolver._baseUrl + request.params.albumId + '/photos?access_token=' + resolver._access_token,
+		json: true
+	};
+	rp(options)
+		.then((res) => {
+			response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+			return response.send(res.data);
+		})
+});
 
-app.get('/BeautyCodeSalon/album/:albumId', function (req, result) {
+////////////////////////////////////////////////////////////
+//	request:	/BeautyCodeSalon/photoUrl/:photoId/:type
+//	response:	{"url":"value","id":"value"}
+//	http://localhost:8080/BeautyCodeSalon/photoUrl/10204426332841683/album
+app.get('/BeautyCodeSalon/photoUrl/:photoId/:photoType', function (requestClient, result) {
+	photosUrlsWithIds = resolver._baseUrl + requestClient.params.photoId + '/picture' + '?' + 'type=' + requestClient.params.photoType + '&fields=url&redirect=false&access_token=' + resolver._access_token;
+	console.log(photosUrlsWithIds);
 	var request = require('request');
-
-	request.get('https://graph.facebook.com/v2.10/10204426332601677/photos?access_token=EAACEdEose0cBAEu341tqQMU6PMr3rD9ZCokuIMrZAeu3lYQ29Cej6mYGqTcmtwNQzEAuZBlnDj2p1pLXZB1mbqBcZCZAuMdQBcZCq5urMSTjJGrLXQJKpNn9ZBMzZAeSWwmZB10RURZCdkiwveZB2TAkskD8qb7cP6u1gVxpspo1ZBSs1GipJMZBZBvTCOfZBqLAqVck1MoZD', options, function (err, res, body) {
+	request(photosUrlsWithIds, function (err, res, body) {
 		if (err) {
 			console.log(err);
 		}
 		if (res.statusCode) {
-			result.setHeader('Content-Type', 'application/json');
-			result.send(body);
+			result.setHeader('Content-Type', 'image/jpeg');
+			result.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+			var responseData = {
+				url: JSON.parse(body).data.url,
+				id: requestClient.params.photoId,
+				photoType: requestClient.params.photoType
+			}
+			result.send(JSON.stringify(responseData));
 		}
 	});
 });
 
+////////////////////////////////////////////////////////////
+//	request:	/login
+//	response:	login.html
+//	http://localhost:8080/login
 app.get('/login', function (req, res) {
 	res.sendfile(__dirname + '/public/login.html');
 });

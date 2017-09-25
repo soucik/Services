@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "",
     "socket.io": "^2.0.3",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "request-promise": "0.1.2"
   }
 }
