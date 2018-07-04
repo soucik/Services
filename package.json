@@ -2,9 +2,9 @@
   "name": "mukhin_chat",
   "description": "example chat application with socket.io",
   "version": "0.0.1",
-    "author": "Palino",
-    "scripts": {
-      "start": "node app.js"
+  "author": "Palino",
+  "scripts": {
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "",

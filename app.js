@@ -8,24 +8,24 @@ var express = require('express')
 
 server.listen(8080);
 
-const keys_private = require('./private/keys_private.js');
+// const keys_private = require('./private/keys_private.js');
 
-function ImagesFromIdResolver() {
-	this._baseUrl = 'https://graph.facebook.com/v2.10/';
-	this._access_token = keys_private.access_token();
-	this._images = new Array();
-}
+// function ImagesFromIdResolver() {
+// 	this._baseUrl = 'https://graph.facebook.com/v2.10/';
+// 	this._access_token = keys_private.access_token();
+// 	this._images = new Array();
+// }
 
-ImagesFromIdResolver.prototype.getUrlFromId = function (photoId) {
-	let photosUrlsWithIds = this._baseUrl + photoId + '/picture' + '?fields=url' + '&type=' + 'album' + '&access_token=' + this._access_token;
-	console.log(photosUrlsWithIds);
-	rp(photosUrlsWithIds)
-		.then(res => { return res.url });
-}
+// ImagesFromIdResolver.prototype.getUrlFromId = function (photoId) {
+// 	let photosUrlsWithIds = this._baseUrl + photoId + '/picture' + '?fields=url' + '&type=' + 'album' + '&access_token=' + this._access_token;
+// 	console.log(photosUrlsWithIds);
+// 	rp(photosUrlsWithIds)
+// 		.then(res => { return res.url });
+// }
 
 app.use(express.static(__dirname + '/public'));
 
-var resolver = new ImagesFromIdResolver();
+// var resolver = new ImagesFromIdResolver();
 
 ////////////////////////////////////////////////////////////
 //	request:	/
