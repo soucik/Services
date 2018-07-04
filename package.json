@@ -15,5 +15,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/soucik/Services/tree/server"
-  }
+  },
+  "engines":{"node": "8.11.2"}
 }
