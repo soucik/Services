@@ -1,8 +1,0 @@
-﻿{
-  "name": "hello world",
-  "version": "0.0.1",
-  "description": "Welcome",
-  "author": "PS",
-  "scripts": {
-    "start": "node app.js"  }
-}
