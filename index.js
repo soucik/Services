@@ -17,18 +17,14 @@ app.use(function(req, res, next){
         return next();
     }
 
-    // if the request has a '.' assume that it's for a file, move along
-    var ext = path.extname(req.path);
-    if (ext !== ''){
-        return next();
-    }
+    // // if the request has a '.' assume that it's for a file, move along
+    // var ext = path.extname(req.path);
+    // if (ext !== ''){
+    //     return next();
+    // }
 
-    fs.createReadStream(staticRoot + 'index.html').pipe(res);
+    // fs.createReadStream(staticRoot + 'index.html').pipe(res);
 
-});
-
-app.get('/login', function (req, res) {
-	res.sendfile(__dirname + '/public/login.html');
 });
 
 app.listen(app.get('port'), function() {
