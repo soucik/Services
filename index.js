@@ -14,6 +14,7 @@ app.use(function(req, res, next){
     // if the request is not html then move along
     var accept = req.accepts('html', 'json', 'xml');
     if(accept !== 'html'){
+        console.log(req);
         return next();
     }
 
