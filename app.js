@@ -1,12 +1,16 @@
-var express = require('express')
-	, app = express()
-	, http = require('http')
-	, request = require('request')
-	, rp = require('request-promise')
-	, server = http.createServer(app)
-	, io = require('socket.io').listen(server);
+var express = require('express'),
+	app = express(),
+	http = require('http'),
+	request = require('request'),
+	rp = require('request-promise'),
+	server = http.createServer(app),
+	io = require('socket.io').listen(server);
 
-server.listen(8080);
+var staticRoot = __dirname + '/';
+
+app.set('port', (process.env.PORT || 3000));
+
+// app.use(express.static(staticRoogit t));
 
 // const keys_private = require('./private/keys_private.js');
 
@@ -89,9 +93,7 @@ app.get('/login', function (req, res) {
 var usernames = {};
 
 // rooms which are currently available in chat
-var rooms = ['AF313C6D972BB5D01908CB9DA8EB1CB8A64FCCEFF96773BF0BC7275E21079B5D321A264E7B0DB0643C5C5D199FD19A1190EA984A78384FDE3B2BB31902A809B6'
-	, 'B7E0F896C83049A9AF5EA271BCBC00A931735BCDF4C7B6EDCD55311C56EA7EA86F9651CF508C8D646BA616AAB2338921D390CE9F6F4A21C07EBEFD7ACBDC1BB3'
-	, 'BDA962F7DA28D6D000B3C2BABE4E0B9FD578FC4A15A7F984DABE74DA8E71E90310DA855B8333D017216CFFC3BF5C9F00ECB10BA7AB5F44F662B0DA44ADC1CE88'];
+var rooms = ['AF313C6D972BB5D01908CB9DA8EB1CB8A64FCCEFF96773BF0BC7275E21079B5D321A264E7B0DB0643C5C5D199FD19A1190EA984A78384FDE3B2BB31902A809B6', 'B7E0F896C83049A9AF5EA271BCBC00A931735BCDF4C7B6EDCD55311C56EA7EA86F9651CF508C8D646BA616AAB2338921D390CE9F6F4A21C07EBEFD7ACBDC1BB3', 'BDA962F7DA28D6D000B3C2BABE4E0B9FD578FC4A15A7F984DABE74DA8E71E90310DA855B8333D017216CFFC3BF5C9F00ECB10BA7AB5F44F662B0DA44ADC1CE88'];
 
 io.sockets.on('connection', function (socket) {
 
