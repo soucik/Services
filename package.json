@@ -1,10 +1,10 @@
 {
-  "name": "chat",
-  "description": "example chat application with socket.io",
+  "name": "test",
+  "description": "test",
   "version": "0.0.1",
   "author": "Palino",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "4.13.4",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/soucik/Services/tree/server"
+    "url": "https://github.com/soucik/Services/tree/test"
   },
   "engines": {
     "node": "8.9.4"
