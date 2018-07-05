@@ -27,6 +27,10 @@ app.use(function(req, res, next){
 
 });
 
+app.get('/login', function (req, res) {
+	res.sendfile(__dirname + '/public/login.html');
+});
+
 app.listen(app.get('port'), function() {
     console.log('app running on port', app.get('port'));
 });

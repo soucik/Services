@@ -1,0 +1,36 @@
+#base{
+    background: url('baranec.jpg') top no-repeat;
+}
+
+body, #base{
+    background-size: cover;
+    background-attachment: local;
+}
+
+h1, h4{
+    text-align: center;
+}
+
+h3{
+    line-height: 150%;
+}
+
+.outer{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner{
+    background-size: 100%;
+    background-color: rgba(51, 91, 150, 0.80);
+    color: white;
+    box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.43);
+    padding: 40px;
+}
