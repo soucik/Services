@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "author": "Palino",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "dependencies": {
+    "excel-as-json": "^2.0.2",
     "express": "4.13.4",
-    "socket.io": "^2.0.3",
     "request": "^2.81.0",
-    "request-promise": "0.1.2"
+    "request-promise": "0.1.2",
+    "socket.io": "^2.0.3"
   },
   "repository": {
     "type": "git",
