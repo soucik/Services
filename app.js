@@ -32,6 +32,26 @@ app.get('/login', function (req, res) {
     res.sendFile(staticRoot + 'login.html');
 });
 
+// Get sample JSON data
+app.get('/login', function (req, res) {
+    res.json(
+                            {
+                            "BodyText": null,
+                            "Duration": 10,
+                            "End": "2100-01-01T00:00:00",
+                            "EventDate": "2017-03-18T01:00:00",
+                            "EventID": null,
+                            "EventName": "example1",
+                            "HeaderText": null,
+                            "LimitAge": false,
+                            "Link": "https://www.viemviac.sk/wp-content/uploads/2016/08/222.jpg",
+                            "ShowWinners": true,
+                            "Start": "2000-01-01T00:00:00",
+                            "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff"
+                        }
+    );
+});
+
 app.get('/excel', function (req1, res1) {
     var fileUrl2 = 'https://sjjuea.db.files.1drv.com/y4mtagkUOK8aoxMMCWeqNIVtPu5_bJOgy3f3dRDFFMIv9ZW6ybkuclZeR-xOhfFHCizDOx0XNtTqIT-aqMMx2JEmYIt8vdYtsv5OIiOq-ywgAF41pEVfmLRoRl5c4qE6eo3xl2l3jzy30-y_FciPAG8Rg/exampl.xlsx?download&psid=1';
     var dest = 'assetFile';
