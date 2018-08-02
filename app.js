@@ -33,7 +33,7 @@ app.get('/login', function (req, res) {
 });
 
 // Get sample JSON data
-app.get('/login', function (req, res) {
+app.get('/samplejson', function (req, res) {
     res.json(
                             {
                             "BodyText": null,
