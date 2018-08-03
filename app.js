@@ -34,6 +34,7 @@ app.get('/login', function (req, res) {
 
 // Get sample JSON data
 app.get('/samplejson', function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(
                             {
                             "BodyText": null,
