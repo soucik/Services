@@ -48,7 +48,9 @@ app.get('/samplejson', function (req, res) {
                             "Link": "https://www.viemviac.sk/wp-content/uploads/2016/08/222.jpg",
                             "ShowWinners": true,
                             "Start": "2000-01-01T00:00:00",
-                            "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff"
+                            "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
+                            "Disposable": true,
+                            "wasShown": false
                         }
     );
 });
