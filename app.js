@@ -38,15 +38,15 @@ app.get('/samplejson', function (req, res) {
     res.json(
                             {
                             "BodyText": null,
-                            "Duration": 10,
+                            "Duration": 20,
                             "End": "2100-01-01T00:00:00",
                             "EventDate": "2017-03-18T01:00:00",
                             "EventID": null,
                             "EventName": "example1",
                             "HeaderText": null,
                             "LimitAge": false,
-                            "Link": "https://www.viemviac.sk/wp-content/uploads/2016/08/222.jpg",
-                            "ShowWinners": true,
+                            "Link": "https://raw.githubusercontent.com/soucik/spa-crud/master/src/assets/images/2.jpg",
+                            "ShowWinners": false,
                             "Start": "2000-01-01T00:00:00",
                             "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
                             "Disposable": true,
