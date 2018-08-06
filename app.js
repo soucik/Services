@@ -38,7 +38,7 @@ app.get('/samplejson', function (req, res) {
     res.json(
                             {
                             "BodyText": null,
-                            "Duration": 20,
+                            "Duration": 10,
                             "End": "2100-01-01T00:00:00",
                             "EventDate": "2017-03-18T01:00:00",
                             "EventID": null,
