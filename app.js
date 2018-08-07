@@ -51,7 +51,7 @@ app.get('/samplejson', function (req, res) {
                             "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
                             "Disposable": true,
                             "WasShown": false,
-                            "Ready": true
+                            "Ready": false
                         }
     );
 });
