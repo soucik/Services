@@ -50,7 +50,8 @@ app.get('/samplejson', function (req, res) {
                             "Start": "2000-01-01T00:00:00",
                             "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
                             "Disposable": true,
-                            "WasShown": false
+                            "WasShown": false,
+                            "Ready": true
                         }
     );
 });
