@@ -16,58 +16,61 @@ app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static(staticRoot));
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     var ext = path.extname(req.path);
     (ext === '') ? next(): res.status(403).send('No permission for file.');
 });
 
 // Get default route
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.sendFile(staticRoot + 'index.html');
     res.send(req);
 });
 
 // Get login route
-app.get('/login', function (req, res) {
+app.get('/login', function(req, res) {
     res.sendFile(staticRoot + 'login.html');
 });
 
-// Get sample JSON data
-app.get('/samplejson', function (req, res) {
+
+
+// Get sample JSON data based on parameter
+app.get('/samplejson/:id', function(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(
-                            {
-                            "BodyText": null,
-                            "Duration": 9,
-                            "End": "2100-01-01T00:00:00",
-                            "EventDate": "2017-03-18T01:00:00",
-                            "EventID": null,
-                            "EventName": "example1",
-                            "HeaderText": null,
-                            "LimitAge": false,
-                            "Link": "https://raw.githubusercontent.com/soucik/spa-crud/master/src/assets/images/2.jpg",
-                            "ShowWinners": false,
-                            "Start": "2000-01-01T00:00:00",
-                            "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
-                            "Disposable": true,
-                            "WasShown": false,
-                            "Ready": false
-                        }
-    );
+    res.json({
+        "BodyText": null,
+        "Duration": 8,
+        "End": "2100-01-01T00:00:00",
+        "EventDate": "2017-03-18T01:00:00",
+        "EventID": null,
+        "EventName": "example1",
+        "HeaderText": null,
+        "LimitAge": false,
+        "Link": "https://github.com/soucik/Services/raw/dev/public/images/" + req.params.id + ".jpg",
+        "ShowWinners": false,
+        "Start": "2000-01-01T00:00:00",
+        "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
+        "Disposable": true,
+        "WasShown": false,
+        "Ready": false
+    });
 });
 
-app.get('/excel', function (req1, res1) {
+
+app.get('/excel', function(req1, res1) {
     var fileUrl2 = 'https://sjjuea.db.files.1drv.com/y4mlPsG8UQ_3QCpVZs7zHG6bGQ-ZdEkJT5fQElxRW1sdmdouPvpU1gmxUtSUvw1FWfX-EGKpJOeQ7m_MuTtpExGXvLNN9CXdeBpxFs86ZYFq-3_v06PjYjfjpKZ7JQdRKhBh1UucwRHGXNM54Hr1JCKjQ/exampl.xlsx?download&psid=1';
     var dest = 'assetFile';
     var file = fs.createWriteStream(dest + '.xlsx');
-    var convertOptions = { sheet: 1 };
-    https.get(fileUrl2, function (res2) {
-        res2.on("error", (err) => {
-              console.log("Error: " + err.message);
-            });
+    var convertOptions = {
+        sheet: 1
+    };
+    https.get(fileUrl2, function(res2) {
+        res2.on("error", (err) => { 
+            console.log("Error: " + err.message);
+        });
         res2.pipe(file);
-        convertExcel(dest + '.xlsx', dest + '.json', convertOptions, function (error1, data1) {
-            if(error1){ 
+        convertExcel(dest + '.xlsx', dest + '.json', convertOptions, function(error1, data1) {
+            if (error1) {
                 console.log(error1);
                 res1.status(500).send('Something went wrong with converting xlsx file.');
             }
@@ -78,10 +81,10 @@ app.get('/excel', function (req1, res1) {
 });
 
 // Route not exists
-app.use(function (req, res) {
+app.use(function(req, res) {
     res.status(404).send('Page not found.');
 });
 
-app.listen(app.get('port'), function () {
+app.listen(app.get('port'), function() {
     console.log('app running on port', app.get('port'));
 });
