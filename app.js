@@ -32,6 +32,30 @@ app.get('/login', function (req, res) {
     res.sendFile(staticRoot + 'login.html');
 });
 
+// Get sample JSON data
+app.get('/samplejson', function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json(
+                            {
+                            "BodyText": null,
+                            "Duration": 9,
+                            "End": "2100-01-01T00:00:00",
+                            "EventDate": "2017-03-18T01:00:00",
+                            "EventID": null,
+                            "EventName": "example1",
+                            "HeaderText": null,
+                            "LimitAge": false,
+                            "Link": "https://raw.githubusercontent.com/soucik/spa-crud/master/src/assets/images/2.jpg",
+                            "ShowWinners": false,
+                            "Start": "2000-01-01T00:00:00",
+                            "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
+                            "Disposable": true,
+                            "WasShown": false,
+                            "Ready": false
+                        }
+    );
+});
+
 app.get('/excel', function (req1, res1) {
     var fileUrl2 = 'https://sjjuea.db.files.1drv.com/y4mlPsG8UQ_3QCpVZs7zHG6bGQ-ZdEkJT5fQElxRW1sdmdouPvpU1gmxUtSUvw1FWfX-EGKpJOeQ7m_MuTtpExGXvLNN9CXdeBpxFs86ZYFq-3_v06PjYjfjpKZ7JQdRKhBh1UucwRHGXNM54Hr1JCKjQ/exampl.xlsx?download&psid=1';
     var dest = 'assetFile';
