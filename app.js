@@ -33,11 +33,14 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/excel', function (req1, res1) {
-    var fileUrl2 = 'https://sjjuea.db.files.1drv.com/y4mtagkUOK8aoxMMCWeqNIVtPu5_bJOgy3f3dRDFFMIv9ZW6ybkuclZeR-xOhfFHCizDOx0XNtTqIT-aqMMx2JEmYIt8vdYtsv5OIiOq-ywgAF41pEVfmLRoRl5c4qE6eo3xl2l3jzy30-y_FciPAG8Rg/exampl.xlsx?download&psid=1';
+    var fileUrl2 = 'https://sjjuea.db.files.1drv.com/y4mlPsG8UQ_3QCpVZs7zHG6bGQ-ZdEkJT5fQElxRW1sdmdouPvpU1gmxUtSUvw1FWfX-EGKpJOeQ7m_MuTtpExGXvLNN9CXdeBpxFs86ZYFq-3_v06PjYjfjpKZ7JQdRKhBh1UucwRHGXNM54Hr1JCKjQ/exampl.xlsx?download&psid=1';
     var dest = 'assetFile';
     var file = fs.createWriteStream(dest + '.xlsx');
     var convertOptions = { sheet: 1 };
     https.get(fileUrl2, function (res2) {
+        res2.on("error", (err) => {
+              console.log("Error: " + err.message);
+            });
         res2.pipe(file);
         convertExcel(dest + '.xlsx', dest + '.json', convertOptions, function (error1, data1) {
             if(error1){ 
