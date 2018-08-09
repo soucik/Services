@@ -1,0 +1,17 @@
+{
+    "BodyText": null,
+    "Duration": 8,
+    "End": "2100-01-01T00:00:00",
+    "EventDate": "2017-03-18T01:00:00",
+    "EventID": null,
+    "EventName": "example1",
+    "HeaderText": null,
+    "LimitAge": false,
+    "Link": "https://github.com/soucik/Services/raw/dev/public/images/1.jpg",
+    "ShowWinners": false,
+    "Start": "2000-01-01T00:00:00",
+    "Tags": "Ľadový Hokej;Slovensko;Extraliga, Playoff",
+    "Disposable": true,
+    "WasShown": false,
+    "Ready": false
+}
